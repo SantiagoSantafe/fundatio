@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/fundatio/static/css/main.d6e75dc6.css",
+    "main.js": "/fundatio/static/js/main.fae94bec.js",
+    "static/js/453.3e9895b9.chunk.js": "/fundatio/static/js/453.3e9895b9.chunk.js",
+    "index.html": "/fundatio/index.html",
+    "main.d6e75dc6.css.map": "/fundatio/static/css/main.d6e75dc6.css.map",
+    "main.fae94bec.js.map": "/fundatio/static/js/main.fae94bec.js.map",
+    "453.3e9895b9.chunk.js.map": "/fundatio/static/js/453.3e9895b9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d6e75dc6.css",
+    "static/js/main.fae94bec.js"
+  ]
+}
