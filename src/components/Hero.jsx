@@ -1,5 +1,4 @@
 import React from "react";
-
 const Hero = () => {
   return (
     <section
@@ -79,8 +78,8 @@ const Hero = () => {
             {/* Main Image */}
             <div className="relative rounded-xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1593113598332-cd288d649433?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
-                alt="Personas colaborando en donaciones solidarias"
+                src="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80"
+                alt="Manos extendidas en círculo simbolizando comunidad y apoyo mutuo"
                 className="h-auto w-full object-cover"
               />
               

@@ -9,8 +9,8 @@ const navLinks = [
   { href: "#hero",          label: "Inicio" },
   { href: "#que-es",        label: "¿Qué es?" },
   { href: "#como-funciona", label: "¿Cómo funciona?" },
-  { href: "#testimonios",   label: "Testimonios" },
-  { href: "#fundaciones",   label: "Fundaciones" },
+  //{ href: "#testimonios",   label: "Testimonios" },
+  //{ href: "#fundaciones",   label: "Fundaciones" },
   { href: "#impacto",       label: "Impacto" },
   { href: "#trazabilidad",  label: "Trazabilidad" },
 ];
