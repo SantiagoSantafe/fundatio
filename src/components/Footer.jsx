@@ -4,99 +4,145 @@ import {
   Twitter,
   Instagram,
   Linkedin,
+  Heart,
+  Shield,
+  Users
 } from "lucide-react";
 
-const footerLinks = {
-  donors: [
-    { label: "Cómo donar", href: "#como-funciona" },
-    { label: "Fundaciones", href: "#fundaciones" },
-    { label: "Seguimiento", href: "#impacto" },
-    { label: "Impacto", href: "#impacto" },
-  ],
-  ngos: [
-    { label: "Registrarse", href: "#cta" },
-    { label: "Verificación", href: "#trazabilidad" },
-    { label: "Reportes", href: "#trazabilidad" },
-    { label: "Recursos", href: "#" },
-  ],
-  support: [
-    { label: "Centro de ayuda", href: "#" },
-    { label: "Contacto", href: "#" },
-    { label: "Términos", href: "#" },
-    { label: "Privacidad", href: "#" },
-  ],
-};
+// Footer actualizado según branding
+const Footer = () => {
+  const footerLinks = {
+    donors: [
+      { label: "Cómo donar", href: "#como-funciona" },
+      { label: "Fundaciones", href: "#fundaciones" },
+      { label: "Seguimiento", href: "#impacto" },
+      { label: "Transparencia", href: "#trazabilidad" },
+    ],
+    ngos: [
+      { label: "Únete como fundación", href: "#cta" },
+      { label: "Proceso de verificación", href: "#trazabilidad" },
+      { label: "Reportes de impacto", href: "#trazabilidad" },
+      { label: "Recursos para ONGs", href: "#" },
+    ],
+    support: [
+      { label: "Centro de ayuda", href: "#" },
+      { label: "Contacta con nosotros", href: "#" },
+      { label: "Términos y condiciones", href: "#" },
+      { label: "Política de privacidad", href: "#" },
+    ],
+  };
 
-const social = [
-  { href: "#", label: "Facebook", Icon: Facebook },
-  { href: "#", label: "Twitter", Icon: Twitter },
-  { href: "#", label: "Instagram", Icon: Instagram },
-  { href: "#", label: "LinkedIn", Icon: Linkedin },
-];
+  const social = [
+    { href: "#", label: "Facebook", Icon: Facebook },
+    { href: "#", label: "Twitter", Icon: Twitter },
+    { href: "#", label: "Instagram", Icon: Instagram },
+    { href: "#", label: "LinkedIn", Icon: Linkedin },
+  ];
 
-const Footer = () => (
-  <footer className="bg-gray-900 text-gray-400">
-    <div className="container mx-auto px-6 py-16">
-      <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
-        {/* Brand */}
-        <div>
-          <h3 className="text-2xl font-bold text-white">Plataforma Social</h3>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed">
-            Conectando corazones generosos con causas que importan.
-          </p>
-          <div className="mt-6 flex gap-4">
-            {social.map(({ href, Icon, label }) => (
-              <a
-                key={label}
-                href={href}
-                aria-label={label}
-                className="rounded-full p-2 text-gray-400 transition hover:bg-gray-800 hover:text-white"
-              >
-                <Icon className="h-5 w-5" />
-              </a>
-            ))}
+  return (
+    <footer className="bg-slate-900 text-gray-300">
+      {/* Background pattern */}
+      <div >
+        <div className="h-full w-full bg-gradient-to-br from-teal-500 to-emerald-500"></div>
+      </div>
+      
+      <div className="container mx-auto px-6 py-16 relative">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
+          {/* Brand Section */}
+          <div className="md:col-span-1">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-10 h-10 bg-gradient-to-br from-teal-400 to-emerald-500 rounded-lg flex items-center justify-center">
+                <Heart className="h-6 w-6 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-white">Fundatio</h3>
+            </div>
+            <p className="text-gray-400 max-w-xs text-sm leading-relaxed mb-6">
+              <span className="text-teal-400 font-medium">Apoya a tu causa con confianza. Mira el impacto.</span>
+              <br /><br />
+              Conectamos corazones generosos con fundaciones transparentes para crear un impacto real y medible en Colombia.
+            </p>
+            <div className="flex gap-3">
+              {social.map(({ href, Icon, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  className="rounded-full p-2 bg-slate-800 text-gray-400 transition-all duration-300 hover:bg-teal-600 hover:text-white hover:scale-110"
+                >
+                  <Icon className="h-5 w-5" />
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {/* Link columns */}
-        {Object.entries({ Donantes: footerLinks.donors, Fundaciones: footerLinks.ngos, Soporte: footerLinks.support }).map(
-          ([title, items]) => (
+          {/* Link columns */}
+          {Object.entries({ 
+            "Para Donantes": footerLinks.donors, 
+            "Para Fundaciones": footerLinks.ngos, 
+            "Soporte": footerLinks.support 
+          }).map(([title, items]) => (
             <div key={title}>
-              <h4 className="text-lg font-semibold text-white">{title}</h4>
-              <ul className="mt-4 space-y-2">
+              <h4 className="text-lg font-semibold text-white mb-4">{title}</h4>
+              <ul className="space-y-3">
                 {items.map(({ label, href }) => (
                   <li key={label}>
-                    <a href={href} className="transition hover:text-white">
+                    <a 
+                      href={href} 
+                      className="text-gray-400 hover:text-teal-400 transition-colors duration-300 text-sm"
+                    >
                       {label}
                     </a>
                   </li>
                 ))}
               </ul>
             </div>
-          )
-        )}
-      </div>
+          ))}
+        </div>
 
-      {/* Bottom */}
-      <div className="mt-12 border-t border-gray-800 pt-8 text-sm">
-        <div className="flex flex-col items-center justify-between gap-6 md:flex-row">
-          <p>© 2025 Plataforma Social. Todos los derechos reservados.</p>
-          <div className="flex gap-6">
-            {[
-              { label: "Política de privacidad", href: "#" },
-              { label: "Términos de uso", href: "#" },
-              { label: "Cookies", href: "#" },
-            ].map(({ label, href }) => (
-              <a key={label} href={href} className="transition hover:text-white">
-                {label}
-              </a>
-            ))}
+        {/* Trust indicators */}
+        <div className="mt-12 pt-8 border-t border-gray-700">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div className="flex items-center gap-3 text-center md:text-left">
+              <Shield className="h-5 w-5 text-teal-400 flex-shrink-0" />
+              <span className="text-sm text-gray-400">100% Transparencia Garantizada</span>
+            </div>
+            <div className="flex items-center gap-3 text-center md:text-left">
+              <Users className="h-5 w-5 text-teal-400 flex-shrink-0" />
+              <span className="text-sm text-gray-400">Fundaciones Verificadas</span>
+            </div>
+            <div className="flex items-center gap-3 text-center md:text-left">
+              <Heart className="h-5 w-5 text-teal-400 flex-shrink-0" />
+              <span className="text-sm text-gray-400">Impacto en Tiempo Real</span>
+            </div>
+          </div>
+          
+          {/* Bottom */}
+          <div className="flex flex-col items-center justify-between gap-6 md:flex-row text-sm">
+            <p className="text-gray-500">
+              © 2025 Fundatio. Todos los derechos reservados. 
+              <span className="text-teal-400 ml-1">Transformando vidas juntos.</span>
+            </p>
+            <div className="flex gap-6">
+              {[
+                { label: "Política de privacidad", href: "#" },
+                { label: "Términos de uso", href: "#" },
+                { label: "Cookies", href: "#" },
+              ].map(({ label, href }) => (
+                <a 
+                  key={label} 
+                  href={href} 
+                  className="text-gray-500 hover:text-teal-400 transition-colors duration-300"
+                >
+                  {label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </footer>
-);
+    </footer>
+  );
+};
 
 
 export default Footer;

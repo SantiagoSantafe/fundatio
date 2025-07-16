@@ -7,23 +7,22 @@ import ComoFunciona from './components/ComoFunciona';
 import Impacto from './components/Impacto';
 import Testimonios from './components/Testimonios';
 import Trazabilidad from './components/Trazabilidad';
-import CallToAction from './components/CallToAction';
-import SubscriptionForm from './components/SubscriptionForm';
+import UnifiedCTA from './components/UnifiedCTA';
 import Footer from './components/Footer';
+
 
 export default function App() {
   return (
     <div className="font-sans text-gray-800">
       <Navbar />
       <Hero />
-      <Fundaciones />
+      {/* <Fundaciones /> */}
       <QueEs />
-      <Testimonios />
+      {/*<Testimonios />*/}
       <ComoFunciona />
-      <Impacto />
       <Trazabilidad />
-      <CallToAction />
-      <SubscriptionForm />
+      <Impacto />
+      <UnifiedCTA />
       <Footer />
     </div>
   );
