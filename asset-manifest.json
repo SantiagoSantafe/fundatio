@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/fundatio/static/css/main.64d7819a.css",
-    "main.js": "/fundatio/static/js/main.06de90a9.js",
+    "main.js": "/fundatio/static/js/main.bc277cb8.js",
     "static/js/453.3e9895b9.chunk.js": "/fundatio/static/js/453.3e9895b9.chunk.js",
     "static/media/fundatio_icon.png": "/fundatio/static/media/fundatio_icon.b111cf7b54a2f2f014e3.png",
     "index.html": "/fundatio/index.html",
     "main.64d7819a.css.map": "/fundatio/static/css/main.64d7819a.css.map",
-    "main.06de90a9.js.map": "/fundatio/static/js/main.06de90a9.js.map",
+    "main.bc277cb8.js.map": "/fundatio/static/js/main.bc277cb8.js.map",
     "453.3e9895b9.chunk.js.map": "/fundatio/static/js/453.3e9895b9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.64d7819a.css",
-    "static/js/main.06de90a9.js"
+    "static/js/main.bc277cb8.js"
   ]
 }
