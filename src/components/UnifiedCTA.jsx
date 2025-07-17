@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { logEvent } from "firebase/analytics";
 import { db, analytics } from '../firebase'; // Asegúrate de que la ruta sea correcta
-import { enviarEmailConfirmacion } from '../services/emailService';
+import { enviarEmailConfirmacion } from '../services/emailServices';
 
 const UnifiedCTA = () => {
   const [activeTab, setActiveTab] = useState('donantes');

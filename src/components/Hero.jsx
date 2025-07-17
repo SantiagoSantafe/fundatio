@@ -1,5 +1,24 @@
 import React from "react";
+import { trackButtonClick } from "../analitycs";
+
 const Hero = () => {
+  // Función para hacer scroll suave a una sección
+  const scrollToSection = (sectionId, buttonName) => {
+    // Trackear el clic en analytics
+    trackButtonClick(buttonName, 'hero', {
+      target_section: sectionId
+    });
+
+    // Hacer scroll suave
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   return (
     <section
       id="hero"
@@ -38,27 +57,49 @@ const Hero = () => {
             en tiempo real.
           </p>
 
-          {/* CTA buttons - Actualizados para landing page */}
+          {/* CTA buttons - Con navegación */}
           <div className="mt-8 flex flex-wrap gap-4">
-            <button className="group inline-flex items-center justify-center rounded-full bg-emerald-600 px-8 py-3 text-base font-medium text-white shadow-lg ring-emerald-600 transition hover:scale-105 hover:bg-emerald-700 focus:outline-none focus-visible:ring-2">
+            <button 
+              onClick={() => scrollToSection('cta', 'hero_unite_now')}
+              className="group inline-flex items-center justify-center rounded-full bg-emerald-600 px-8 py-3 text-base font-medium text-white shadow-lg ring-emerald-600 transition hover:scale-105 hover:bg-emerald-700 focus:outline-none focus-visible:ring-2"
+            >
               Únete ahora
               <svg className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
-            <button className="inline-block rounded-full border-2 border-emerald-600 bg-white px-8 py-3 text-base font-medium text-emerald-600 transition hover:bg-emerald-50 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600">
+            <button 
+              onClick={() => scrollToSection('como-funciona', 'hero_how_it_works')}
+              className="inline-block rounded-full border-2 border-emerald-600 bg-white px-8 py-3 text-base font-medium text-emerald-600 transition hover:bg-emerald-50 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-600"
+            >
               Ver cómo funciona
             </button>
           </div>
 
-          {/* Quick stats - Actualizadas para mostrar metas futuras */}
+          {/* Quick stats - Con interacciones */}
           <div className="mt-12 grid grid-cols-3 gap-6 text-center md:text-left">
             {[
-              { label: "Meta donantes", value: "100K+" },
-              { label: "Fundaciones objetivo", value: "1,000+" },
-              { label: "Transparencia", value: "100%" },
-            ].map(({ label, value }, index) => (
-              <div key={label} className="flex flex-col items-center md:items-start group">
+              { 
+                label: "Meta donantes", 
+                value: "100K+",
+                onClick: () => scrollToSection('que-es', 'hero_stat_donantes')
+              },
+              { 
+                label: "Fundaciones objetivo", 
+                value: "1,000+",
+                onClick: () => scrollToSection('impacto', 'hero_stat_fundaciones')
+              },
+              { 
+                label: "Transparencia", 
+                value: "100%",
+                onClick: () => scrollToSection('trazabilidad', 'hero_stat_transparency')
+              },
+            ].map(({ label, value, onClick }, index) => (
+              <div 
+                key={label} 
+                className="flex flex-col items-center md:items-start group cursor-pointer"
+                onClick={onClick}
+              >
                 <span className="text-2xl font-bold text-gray-900 lg:text-3xl group-hover:text-emerald-600 transition-colors">
                   {value}
                 </span>
@@ -83,13 +124,19 @@ const Hero = () => {
                 className="h-auto w-full object-cover"
               />
               
-              {/* Floating elements */}
-              <div className="absolute top-6 right-6 bg-white rounded-full p-3 shadow-lg">
+              {/* Floating elements - Con interacciones */}
+              <div 
+                className="absolute top-6 right-6 bg-white rounded-full p-3 shadow-lg cursor-pointer hover:scale-110 transition-transform"
+                onClick={() => scrollToSection('trazabilidad', 'hero_verified_badge')}
+              >
                 <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">✓</span>
                 </div>
               </div>
-              <div className="absolute bottom-6 left-6 bg-white rounded-lg p-3 shadow-lg">
+              <div 
+                className="absolute bottom-6 left-6 bg-white rounded-lg p-3 shadow-lg cursor-pointer hover:scale-110 transition-transform"
+                onClick={() => scrollToSection('impacto', 'hero_realtime_badge')}
+              >
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
                   <span className="text-xs font-medium text-gray-700">En tiempo real</span>

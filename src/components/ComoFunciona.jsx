@@ -1,7 +1,23 @@
+import React from 'react';
 import { Search, HandCoins, BarChart2 } from "lucide-react";
-import { motion } from "framer-motion";
+import { trackButtonClick, trackSectionView } from "../analitycs";
 
 const ComoFunciona = () => {
+  // Función para hacer scroll a CTA
+  const scrollToCTA = () => {
+    trackButtonClick('como_funciona_start_now', 'como-funciona', {
+      target_section: 'cta'
+    });
+
+    const element = document.getElementById('cta');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   const steps = [
     {
       title: "Explora fundaciones",
@@ -50,13 +66,13 @@ const ComoFunciona = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
         {/* Header Section */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block px-4 py- bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
             Proceso simple
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
             ¿Cómo funciona?
           </h2>
-          <p className="mt-4 text-lg text-gray-600 sm:mt-6">
+          <p className="mt-4 text-lg text-gray-600 sm:mt-4">
             Hacer el bien nunca fue tan <span className="font-semibold text-emerald-700">simple y transparente</span>
           </p>
         </div>
@@ -68,6 +84,9 @@ const ComoFunciona = () => {
               <div
                 key={title}
                 className="relative mx-auto max-w-sm lg:mx-0 lg:max-w-none group"
+                onClick={() => {
+                  trackSectionView(`como_funciona_step_${idx + 1}`);
+                }}
               >
                 {/* Vertical connector for mobile/tablet */}
                 {idx < steps.length - 1 && (
@@ -78,7 +97,7 @@ const ComoFunciona = () => {
                 )}
                 
                 {/* Step Content */}
-                <div className="flex flex-col items-center text-center lg:items-start lg:text-left bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105">
+                <div className="flex flex-col items-center text-center lg:items-start lg:text-left bg-white rounded-2xl p-8 shadow-sm hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer">
                   {/* Icon Container */}
                   <div className="relative mb-6">
                     <span
@@ -105,6 +124,24 @@ const ComoFunciona = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-16 sm:mt-20 text-center">
+          <div className="bg-white rounded-2xl shadow-lg p-8 border border-emerald-100">
+            <h3 className="text-2xl font-bold text-gray-900 mb-4">
+              ¿Listo para comenzar?
+            </h3>
+            <p className="text-lg text-gray-600 mb-6">
+              Únete a nuestra lista de espera y sé de los primeros en transformar vidas
+            </p>
+            <button 
+              onClick={scrollToCTA}
+              className="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-colors duration-300 hover:scale-105 transform shadow-lg"
+            >
+              Empezar ahora
+            </button>
           </div>
         </div>
       </div>

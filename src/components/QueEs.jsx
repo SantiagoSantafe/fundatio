@@ -1,6 +1,22 @@
 import React from 'react';
+import { trackButtonClick } from '../analitycs';
 
 const QueEs = () => {
+  // Función para hacer scroll suave a una sección
+  const scrollToSection = (sectionId, buttonName) => {
+    trackButtonClick(buttonName, 'que-es', {
+      target_section: sectionId
+    });
+
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   const benefits = [
     {
       icon: "🔍",
@@ -60,10 +76,16 @@ const QueEs = () => {
             </div>
 
             <div className="flex flex-wrap gap-4">
-              <button className="bg-emerald-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-colors duration-300">
+              <button 
+                onClick={() => scrollToSection('como-funciona', 'que_es_how_it_works')}
+                className="bg-emerald-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-colors duration-300"
+              >
                 Ver cómo funciona
               </button>
-              <button className="border-2 border-emerald-600 text-emerald-600 px-6 py-3 rounded-full font-semibold hover:bg-emerald-50 transition-colors duration-300">
+              <button 
+                onClick={() => scrollToSection('cta', 'que_es_join_now')}
+                className="border-2 border-emerald-600 text-emerald-600 px-6 py-3 rounded-full font-semibold hover:bg-emerald-50 transition-colors duration-300"
+              >
                 Únete ahora
               </button>
             </div>
@@ -80,13 +102,19 @@ const QueEs = () => {
               />
               
               {/* Floating elements */}
-              <div className="absolute top-4 right-4 bg-white rounded-lg p-3 shadow-lg z-20">
+              <div 
+                className="absolute top-4 right-4 bg-white rounded-lg p-3 shadow-lg z-20 cursor-pointer hover:scale-110 transition-transform"
+                onClick={() => scrollToSection('impacto', 'que_es_live_impact')}
+              >
                 <div className="flex items-center space-x-2">
                   <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
                   <span className="text-xs font-medium text-gray-700">Impacto en vivo</span>
                 </div>
               </div>
-              <div className="absolute bottom-4 left-4 bg-white rounded-full p-3 shadow-lg z-20">
+              <div 
+                className="absolute bottom-4 left-4 bg-white rounded-full p-3 shadow-lg z-20 cursor-pointer hover:scale-110 transition-transform"
+                onClick={() => scrollToSection('trazabilidad', 'que_es_verified')}
+              >
                 <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">✓</span>
                 </div>

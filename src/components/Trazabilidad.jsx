@@ -1,8 +1,23 @@
 import React from 'react';
-import { motion } from "framer-motion";
 import { ShieldCheck, BarChart, ArrowRight } from "lucide-react";
+import { trackButtonClick, trackSectionView } from "../analitycs";
 
 const Trazabilidad = () => {
+  // Función para hacer scroll a CTA
+  const scrollToCTA = () => {
+    trackButtonClick('trazabilidad_join_now', 'trazabilidad', {
+      target_section: 'cta'
+    });
+
+    const element = document.getElementById('cta');
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
   const traceCards = [
     {
       title: "Seguridad de principio a fin",
@@ -76,8 +91,11 @@ const Trazabilidad = () => {
               <div
                 key={title}
                 className="group relative"
+                onClick={() => {
+                  trackSectionView(`trazabilidad_feature_${i + 1}`);
+                }}
               >
-                <div className="relative overflow-hidden rounded-2xl border border-emerald-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 lg:p-10">
+                <div className="relative overflow-hidden rounded-2xl border border-emerald-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 lg:p-10 cursor-pointer">
                   {/* Icon */}
                   <div className="mb-6">
                     <span
@@ -140,7 +158,13 @@ const Trazabilidad = () => {
               <div className="mt-12 lg:mt-16">
                 <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-4">
                   {traceSteps.map((step, idx) => (
-                    <div key={step.title} className="relative">
+                    <div 
+                      key={step.title} 
+                      className="relative cursor-pointer"
+                      onClick={() => {
+                        trackSectionView(`trazabilidad_step_${idx + 1}`);
+                      }}
+                    >
                       {/* Connector Line - Desktop */}
                       {idx < traceSteps.length - 1 && (
                         <div className="absolute left-1/2 top-8 hidden h-px w-full translate-x-1/2 lg:block">
@@ -150,7 +174,7 @@ const Trazabilidad = () => {
                       )}
 
                       {/* Step Content */}
-                      <div className="flex flex-col items-center text-center">
+                      <div className="flex flex-col items-center text-center hover:scale-105 transition-transform duration-300">
                         <div className="relative mb-4">
                           <span className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-600 text-xl font-bold text-white shadow-lg ring-4 ring-emerald-200 ring-offset-2">
                             {idx + 1}
@@ -174,6 +198,16 @@ const Trazabilidad = () => {
                     </div>
                   ))}
                 </div>
+              </div>
+
+              {/* CTA */}
+              <div className="mt-12 text-center">
+                <button 
+                  onClick={scrollToCTA}
+                  className="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-colors duration-300 hover:scale-105 transform shadow-lg"
+                >
+                  Quiero esta transparencia
+                </button>
               </div>
             </div>
           </div>
