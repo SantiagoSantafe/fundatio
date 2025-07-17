@@ -7,7 +7,7 @@ import {
   trackSectionView,
   trackButtonClick,
   trackEngagement
-} from '../analytics';
+} from '../analitycs';
 
 export const usePageAnalytics = (pageName, pageTitle = null) => {
   const startTimeRef = useRef(null);

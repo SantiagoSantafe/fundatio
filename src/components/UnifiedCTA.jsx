@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { logEvent } from "firebase/analytics";
 import { db, analytics } from '../firebase'; // Asegúrate de que la ruta sea correcta
+import { enviarEmailConfirmacion } from '../services/emailService';
 
 const UnifiedCTA = () => {
   const [activeTab, setActiveTab] = useState('donantes');
@@ -121,6 +122,19 @@ const UnifiedCTA = () => {
           fundacion_id: docRef.id,
           organizacion: formData.organizacion
         });
+      }
+
+      // Enviar email de confirmación
+      try {
+        const emailResult = await enviarEmailConfirmacion(dataToSave, activeTab);
+        if (emailResult.success) {
+          console.log('Email de confirmación enviado exitosamente');
+        } else {
+          console.warn('No se pudo enviar el email de confirmación:', emailResult.message);
+        }
+      } catch (emailError) {
+        console.error('Error al enviar email:', emailError);
+        // No fallar el registro si el email falla
       }
 
       setSubmitted(true);

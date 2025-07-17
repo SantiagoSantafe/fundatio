@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePageAnalytics } from './hooks/useAnalytics';
+import { usePageAnalytics } from './hooks/useAnalitycs';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Fundaciones from './components/Fundaciones';
