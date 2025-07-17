@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { collection, addDoc, Timestamp } from "firebase/firestore";
+import { logEvent } from "firebase/analytics";
+import { db, analytics } from '../firebase'; // Asegúrate de que la ruta sea correcta
 
 const UnifiedCTA = () => {
   const [activeTab, setActiveTab] = useState('donantes');
@@ -10,40 +13,177 @@ const UnifiedCTA = () => {
     mensaje: ''
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
-  const handleInputChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+  // Validar formulario
+  const validateForm = () => {
+    const newErrors = {};
+    
+    if (!formData.nombre.trim()) {
+      newErrors.nombre = "El nombre es requerido";
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = "El email es requerido";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Email inválido";
+    }
+    
+    if (!formData.telefono.trim()) {
+      newErrors.telefono = "El teléfono es requerido";
+    }
+
+    if (activeTab === 'fundaciones' && !formData.organizacion.trim()) {
+      newErrors.organizacion = "El nombre de la fundación es requerido";
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Aquí iría la lógica para procesar el registro
-    console.log('Registrando:', { tipo: activeTab, datos: formData });
-    
-    // Simular guardado en localStorage (esto se reemplazaría con una API real)
-    const registros = JSON.parse(localStorage.getItem('registros') || '[]');
-    registros.push({
-      id: Date.now(),
-      tipo: activeTab,
-      datos: formData,
-      fecha: new Date().toISOString()
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
     });
-    localStorage.setItem('registros', JSON.stringify(registros));
     
-    setSubmitted(true);
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ nombre: '', email: '', telefono: '', organizacion: '', mensaje: '' });
-    }, 3000);
+    // Limpiar error del campo si existe
+    if (errors[name]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: ""
+      }));
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    if (!validateForm()) {
+      // Registrar intento de envío con errores
+      logEvent(analytics, "form_submit_error", {
+        tab: activeTab,
+        errors: Object.keys(errors).join(", ")
+      });
+      return;
+    }
+
+    setLoading(true);
+    
+    try {
+      // Registrar inicio del proceso
+      logEvent(analytics, "form_submit_start", {
+        tab: activeTab,
+        email_domain: formData.email.split('@')[1]
+      });
+
+      // Preparar datos para guardar
+      const dataToSave = {
+        nombre: formData.nombre,
+        email: formData.email,
+        telefono: formData.telefono,
+        mensaje: formData.mensaje,
+        tipo: activeTab, // 'donantes' o 'fundaciones'
+        fechaRegistro: Timestamp.now(),
+        estado: "activo"
+      };
+
+      // Agregar organización si es fundación
+      if (activeTab === 'fundaciones') {
+        dataToSave.organizacion = formData.organizacion;
+      }
+
+      // Determinar la colección según el tipo
+      const collectionName = activeTab === 'donantes' ? 'donantes' : 'fundaciones';
+      
+      // Guardar en Firestore
+      const docRef = await addDoc(collection(db, collectionName), dataToSave);
+      
+      console.log(`${activeTab} guardado con ID: `, docRef.id);
+
+      // Registrar éxito en Analytics
+      logEvent(analytics, "registration_success", {
+        tab: activeTab,
+        user_id: docRef.id,
+        has_message: !!formData.mensaje
+      });
+
+      // También registrar evento específico según el tipo
+      if (activeTab === 'donantes') {
+        logEvent(analytics, "donante_registrado", {
+          donante_id: docRef.id,
+          tiene_motivacion: !!formData.mensaje
+        });
+      } else {
+        logEvent(analytics, "fundacion_registrada", {
+          fundacion_id: docRef.id,
+          organizacion: formData.organizacion
+        });
+      }
+
+      setSubmitted(true);
+      
+      // Reset form after 5 seconds
+      setTimeout(() => {
+        setSubmitted(false);
+        setFormData({ 
+          nombre: '', 
+          email: '', 
+          telefono: '', 
+          organizacion: '', 
+          mensaje: '' 
+        });
+        setErrors({});
+      }, 5000);
+
+    } catch (error) {
+      console.error("Error al registrar:", error);
+      
+      // Registrar error en Analytics
+      logEvent(analytics, "registration_failed", {
+        tab: activeTab,
+        error_message: error.message
+      });
+      
+      // Mostrar error al usuario
+      setErrors({
+        general: "Error al procesar el registro. Por favor, inténtalo de nuevo."
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   const resetForm = () => {
-    setFormData({ nombre: '', email: '', telefono: '', organizacion: '', mensaje: '' });
+    setFormData({ 
+      nombre: '', 
+      email: '', 
+      telefono: '', 
+      organizacion: '', 
+      mensaje: '' 
+    });
     setSubmitted(false);
+    setErrors({});
+  };
+
+  // Registrar cambio de tab en Analytics
+  const handleTabChange = (newTab) => {
+    logEvent(analytics, "tab_changed", {
+      from_tab: activeTab,
+      to_tab: newTab
+    });
+    setActiveTab(newTab);
+    resetForm();
+  };
+
+  // Registrar interacciones con campos
+  const handleFieldFocus = (fieldName) => {
+    logEvent(analytics, "form_field_focus", {
+      field_name: fieldName,
+      tab: activeTab
+    });
   };
 
   return (
@@ -74,7 +214,7 @@ const UnifiedCTA = () => {
           <div className="flex justify-center mb-12">
             <div className="bg-gray-50 rounded-full p-2 shadow-sm border border-gray-200">
               <button
-                onClick={() => { setActiveTab('donantes'); resetForm(); }}
+                onClick={() => handleTabChange('donantes')}
                 className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
                   activeTab === 'donantes'
                     ? 'bg-emerald-600 text-white shadow-lg'
@@ -84,7 +224,7 @@ const UnifiedCTA = () => {
                 Quiero Donar
               </button>
               <button
-                onClick={() => { setActiveTab('fundaciones'); resetForm(); }}
+                onClick={() => handleTabChange('fundaciones')}
                 className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
                   activeTab === 'fundaciones'
                     ? 'bg-emerald-600 text-white shadow-lg'
@@ -183,7 +323,7 @@ const UnifiedCTA = () => {
                   </div>
                 </div>
               ) : (
-                <div className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="text-center mb-8">
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
                       Únete a la Lista de Espera
@@ -196,6 +336,13 @@ const UnifiedCTA = () => {
                     </p>
                   </div>
 
+                  {/* Error general */}
+                  {errors.general && (
+                    <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+                      <p className="text-red-800 text-sm">{errors.general}</p>
+                    </div>
+                  )}
+
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
                       Nombre Completo *
@@ -205,9 +352,15 @@ const UnifiedCTA = () => {
                       name="nombre"
                       value={formData.nombre}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                      onFocus={() => handleFieldFocus('nombre')}
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${
+                        errors.nombre ? 'border-red-500' : 'border-gray-300'
+                      }`}
                       required
                     />
+                    {errors.nombre && (
+                      <p className="text-red-500 text-sm mt-1">{errors.nombre}</p>
+                    )}
                   </div>
 
                   <div>
@@ -219,9 +372,15 @@ const UnifiedCTA = () => {
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                      onFocus={() => handleFieldFocus('email')}
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${
+                        errors.email ? 'border-red-500' : 'border-gray-300'
+                      }`}
                       required
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                    )}
                   </div>
 
                   <div>
@@ -233,9 +392,15 @@ const UnifiedCTA = () => {
                       name="telefono"
                       value={formData.telefono}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
+                      onFocus={() => handleFieldFocus('telefono')}
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${
+                        errors.telefono ? 'border-red-500' : 'border-gray-300'
+                      }`}
                       required
                     />
+                    {errors.telefono && (
+                      <p className="text-red-500 text-sm mt-1">{errors.telefono}</p>
+                    )}
                   </div>
 
                   {activeTab === 'fundaciones' && (
@@ -248,9 +413,15 @@ const UnifiedCTA = () => {
                         name="organizacion"
                         value={formData.organizacion}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors"
-                        required={activeTab === 'fundaciones'}
+                        onFocus={() => handleFieldFocus('organizacion')}
+                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${
+                          errors.organizacion ? 'border-red-500' : 'border-gray-300'
+                        }`}
+                        required
                       />
+                      {errors.organizacion && (
+                        <p className="text-red-500 text-sm mt-1">{errors.organizacion}</p>
+                      )}
                     </div>
                   )}
 
@@ -262,6 +433,7 @@ const UnifiedCTA = () => {
                       name="mensaje"
                       value={formData.mensaje}
                       onChange={handleInputChange}
+                      onFocus={() => handleFieldFocus('mensaje')}
                       rows={3}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors resize-none"
                       placeholder={activeTab === 'donantes' 
@@ -272,12 +444,22 @@ const UnifiedCTA = () => {
                   </div>
 
                   <button
-                    onClick={handleSubmit}
-                    className="w-full bg-emerald-600 text-white py-4 px-6 rounded-lg font-semibold hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition-all duration-300 transform hover:scale-[1.02] shadow-lg"
+                    type="submit"
+                    disabled={loading}
+                    className={`w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-300 transform shadow-lg ${
+                      loading
+                        ? 'bg-gray-400 cursor-not-allowed'
+                        : 'bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 hover:scale-[1.02]'
+                    }`}
                   >
-                    {activeTab === 'donantes' ? 'Unirme como Donante' : 'Registrar mi Fundación'}
+                    {loading 
+                      ? 'Registrando...' 
+                      : activeTab === 'donantes' 
+                        ? 'Unirme como Donante' 
+                        : 'Registrar mi Fundación'
+                    }
                   </button>
-                </div>
+                </form>
               )}
             </div>
           </div>
