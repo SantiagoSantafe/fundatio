@@ -1,5 +1,5 @@
 import React from 'react';
-import { trackButtonClick, trackSectionView } from '../Analytics';
+import { trackButtonClick, trackSectionView } from '../analytics';
 
 const Impacto = () => {
   // Función para hacer scroll a CTA

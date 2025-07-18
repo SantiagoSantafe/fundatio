@@ -1,6 +1,6 @@
 import React from 'react';
 import { ShieldCheck, BarChart, ArrowRight } from "lucide-react";
-import { trackButtonClick, trackSectionView } from "../Analytics";
+import { trackButtonClick, trackSectionView } from "../analytics";
 
 const Trazabilidad = () => {
   // Función para hacer scroll a CTA

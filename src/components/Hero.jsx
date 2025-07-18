@@ -1,5 +1,5 @@
 import React from "react";
-import { trackButtonClick } from "../Analytics";
+import { trackButtonClick } from "../analytics";
 
 const Hero = () => {
   // Función para hacer scroll suave a una sección

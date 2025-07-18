@@ -1,6 +1,6 @@
 import React from 'react';
 import { Search, HandCoins, BarChart2 } from "lucide-react";
-import { trackButtonClick, trackSectionView } from "../Analytics";
+import { trackButtonClick, trackSectionView } from "../analytics";
 
 const ComoFunciona = () => {
   // Función para hacer scroll a CTA
