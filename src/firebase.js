@@ -1,26 +1,58 @@
-// Import the functions you need from the SDKs you need
+// src/firebase.js
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 
-// Your web app's Firebase configuration
+// Validar que las variables de entorno estén disponibles
+const requiredEnvVars = [
+  'REACT_APP_FIREBASE_API_KEY',
+  'REACT_APP_FIREBASE_AUTH_DOMAIN',
+  'REACT_APP_FIREBASE_PROJECT_ID',
+  'REACT_APP_FIREBASE_STORAGE_BUCKET',
+  'REACT_APP_FIREBASE_MESSAGING_SENDER_ID',
+  'REACT_APP_FIREBASE_APP_ID',
+  'REACT_APP_FIREBASE_MEASUREMENT_ID'
+];
+
+const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
+if (missingVars.length > 0) {
+  console.error('❌ Variables de entorno faltantes:', missingVars);
+  throw new Error(`Faltan las siguientes variables de entorno: ${missingVars.join(', ')}`);
+}
+
+// Firebase configuration usando variables de entorno
 const firebaseConfig = {
-  apiKey: "AIzaSyCchFZ5o8ndMmjaESsCSSXsajHF_ck-cOQ",
-  authDomain: "fundatio-c1791.firebaseapp.com",
-  projectId: "fundatio-c1791",
-  storageBucket: "fundatio-c1791.firebasestorage.app",
-  messagingSenderId: "1051642057751",
-  appId: "1:1051642057751:web:b51e6617f4ed5cb68b3852",
-  measurementId: "G-PMJH9MFXJC"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+let app;
+let analytics = null;
+let db = null;
+let auth = null;
 
-// Initialize Firebase services
-export const analytics = getAnalytics(app);
-export const db = getFirestore(app);
-export const auth = getAuth(app);
+try {
+  app = initializeApp(firebaseConfig);
+  
+  // Solo inicializar Analytics en el navegador
+  if (typeof window !== 'undefined') {
+    analytics = getAnalytics(app);
+  }
+  
+  db = getFirestore(app);
+  auth = getAuth(app);
+  
+  console.log('✅ Firebase inicializado correctamente');
+} catch (error) {
+  console.error('❌ Error inicializando Firebase:', error);
+}
 
+export { analytics, db, auth };
 export default app;
