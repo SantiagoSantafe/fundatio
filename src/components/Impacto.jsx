@@ -1,71 +1,112 @@
-import React from 'react';
-import { trackButtonClick, trackSectionView } from '../analytics';
+import React from "react";
+import { trackButtonClick, trackSectionView } from "../analytics";
 
 const Impacto = () => {
   // Función para hacer scroll a CTA
   const scrollToCTA = () => {
-    trackButtonClick('impacto_join_community', 'impacto', {
-      target_section: 'cta'
+    trackButtonClick("impacto_join_community", "impacto", {
+      target_section: "cta",
     });
 
-    const element = document.getElementById('cta');
+    const element = document.getElementById("cta");
     if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
       });
     }
   };
 
+  // Ir al panorama (diagnóstico)
+  const scrollToPanorama = () => {
+    trackButtonClick("impacto_view_panorama", "impacto", {
+      target_section: "panorama",
+    });
+    const el = document.getElementById("panorama");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
-    <section id="impacto" className="py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-sky-50 relative overflow-hidden">
+    <section
+      id="impacto"
+      className="py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-sky-50 relative overflow-hidden"
+    >
       {/* Decorative elements */}
       <div className="absolute top-10 right-10 w-32 h-32 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-pulse"></div>
-      <div className="absolute bottom-10 left-10 w-40 h-40 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-pulse" style={{ animationDelay: "2s" }}></div>
-      
+      <div
+        className="absolute bottom-10 left-10 w-40 h-40 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-pulse"
+        style={{ animationDelay: "2s" }}
+      ></div>
+
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16">
           <span className="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
             Nuestro propósito
           </span>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            El Impacto que <span className="text-emerald-600">Queremos Crear</span>
+            El Impacto que{" "}
+            <span className="text-emerald-600">Queremos Crear</span>
           </h2>
           <p className="text-lg text-gray-600 mb-16 max-w-3xl mx-auto">
-            Nuestra misión es transformar la manera en que las personas se conectan con las causas que más les importan, creando un mundo más <span className="font-semibold text-emerald-700">solidario y transparente</span>.
+            Nuestra misión es transformar la manera en que las personas se
+            conectan con las causas que más les importan, creando un mundo más{" "}
+            <span className="font-semibold text-emerald-700">
+              solidario y transparente
+            </span>
+            .
           </p>
+
+          {/* Short context + link to Panorama */}
+          <div className="max-w-3xl mx-auto mb-12">
+            <div className="bg-emerald-50 border border-emerald-100 rounded-lg p-4 flex items-center justify-between">
+              <div className="text-sm text-gray-700">
+                Conoce el diagnóstico que inspira nuestras prioridades:
+                fragilidad financiera, brecha tecnológica y baja participación
+                ciudadana.
+              </div>
+              <button
+                onClick={scrollToPanorama}
+                className="ml-4 bg-white text-emerald-600 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-100"
+                aria-label="Ver panorama completo"
+              >
+                Ver diagnóstico
+              </button>
+            </div>
+          </div>
         </div>
 
         {/* Objetivos de Impacto */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-20">
           {[
-            { 
-              valor: "$10M+", 
-              texto: "Meta de Donaciones Anuales", 
-              color: "text-emerald-600", 
+            {
+              valor: "$10M+",
+              texto: "Meta de Donaciones Anuales",
+              color: "text-emerald-600",
               descripcion: "Facilitar millones en donaciones",
-              metric: "donations_goal"
+              metric: "donations_goal",
             },
-            { 
-              valor: "1,000+", 
-              texto: "Fundaciones Verificadas", 
-              color: "text-teal-600", 
+            {
+              valor: "1,000+",
+              texto: "Fundaciones Verificadas",
+              color: "text-teal-600",
               descripcion: "Red confiable de organizaciones",
-              metric: "foundations_goal"
+              metric: "foundations_goal",
             },
-            { 
-              valor: "100K+", 
-              texto: "Donantes Conectados", 
-              color: "text-emerald-600", 
+            {
+              valor: "100K+",
+              texto: "Donantes Conectados",
+              color: "text-emerald-600",
               descripcion: "Comunidad comprometida",
-              metric: "donors_goal"
+              metric: "donors_goal",
             },
-            { 
-              valor: "5,000+", 
-              texto: "Proyectos Impulsados", 
-              color: "text-teal-600", 
+            {
+              valor: "5,000+",
+              texto: "Proyectos Impulsados",
+              color: "text-teal-600",
               descripcion: "Iniciativas que cambien vidas",
-              metric: "projects_goal"
+              metric: "projects_goal",
             },
           ].map((item, i) => (
             <div
@@ -75,7 +116,9 @@ const Impacto = () => {
                 trackSectionView(`impacto_metric_${item.metric}`);
               }}
             >
-              <div className={`text-5xl font-bold mb-2 ${item.color} group-hover:scale-110 transition-transform`}>
+              <div
+                className={`text-5xl font-bold mb-2 ${item.color} group-hover:scale-110 transition-transform`}
+              >
                 {item.valor}
               </div>
               <p className="text-gray-800 font-semibold mb-2">{item.texto}</p>
@@ -93,31 +136,35 @@ const Impacto = () => {
             {[
               {
                 titulo: "Transparencia Total",
-                descripcion: "Crear un ecosistema donde cada donación sea rastreada en tiempo real, mostrando exactamente cómo se usa cada peso para maximizar el impacto social.",
+                descripcion:
+                  "Crear un ecosistema donde cada donación sea rastreada en tiempo real, mostrando exactamente cómo se usa cada peso para maximizar el impacto social.",
                 icono: "🔍",
-                id: "transparency_vision"
+                id: "transparency_vision",
               },
               {
                 titulo: "Conectar Corazones",
-                descripcion: "Eliminar la distancia entre donantes y beneficiarios, creando vínculos auténticos que inspiren una cultura de generosidad sostenible.",
+                descripcion:
+                  "Eliminar la distancia entre donantes y beneficiarios, creando vínculos auténticos que inspiren una cultura de generosidad sostenible.",
                 icono: "💝",
-                id: "connection_vision"
+                id: "connection_vision",
               },
               {
                 titulo: "Democratizar la Filantropía",
-                descripcion: "Hacer que donar sea tan simple como enviar un mensaje, permitiendo que cualquier persona pueda contribuir a causas significativas sin barreras.",
+                descripcion:
+                  "Hacer que donar sea tan simple como enviar un mensaje, permitiendo que cualquier persona pueda contribuir a causas significativas sin barreras.",
                 icono: "🌍",
-                id: "democratize_vision"
+                id: "democratize_vision",
               },
               {
                 titulo: "Amplificar el Bien",
-                descripcion: "Potenciar el trabajo de fundaciones verificadas, ayudándolas a llegar a más personas y multiplicar su impacto en las comunidades.",
+                descripcion:
+                  "Potenciar el trabajo de fundaciones verificadas, ayudándolas a llegar a más personas y multiplicar su impacto en las comunidades.",
                 icono: "🚀",
-                id: "amplify_vision"
+                id: "amplify_vision",
               },
             ].map((vision, i) => (
-              <div 
-                key={i} 
+              <div
+                key={i}
                 className="bg-emerald-50 rounded-lg p-6 hover:shadow-md transition-all duration-300 hover:scale-105 border border-emerald-100 cursor-pointer"
                 onClick={() => {
                   trackSectionView(`impacto_vision_${vision.id}`);
@@ -129,7 +176,9 @@ const Impacto = () => {
                     {vision.titulo}
                   </h4>
                 </div>
-                <p className="text-gray-600 mb-4 leading-relaxed">{vision.descripcion}</p>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  {vision.descripcion}
+                </p>
                 <div className="flex items-center text-emerald-600 font-medium">
                   <span className="mr-2">Próximamente</span>
                   <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
@@ -145,9 +194,10 @@ const Impacto = () => {
                 ¿Quieres ser parte de este impacto?
               </h4>
               <p className="text-lg mb-6 opacity-90">
-                Únete a nuestra comunidad y ayúdanos a transformar el futuro de las donaciones en Colombia
+                Únete a nuestra comunidad y ayúdanos a transformar el futuro de
+                las donaciones en Colombia
               </p>
-              <button 
+              <button
                 onClick={scrollToCTA}
                 className="bg-white text-emerald-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 hover:scale-105 transform shadow-lg"
               >
