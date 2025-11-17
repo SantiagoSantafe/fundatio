@@ -44,7 +44,7 @@ const Panorama = () => {
   return (
     <section
       id="panorama"
-      className="py-20 bg-gradient-to-b from-emerald-50 to-white"
+      className="py-20 bg-gradient-to-b from-cyan-500 to-cyan-50"
     >
       <div className="container mx-auto px-6">
         <div className="text-center mb-10">
@@ -62,7 +62,7 @@ const Panorama = () => {
           {cards.map((c) => (
             <article
               key={c.title}
-              className="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100 hover:shadow-lg transition-transform hover:-translate-y-1"
+              className="bg-white p-6 rounded-2xl shadow-sm border border-cyan-200 hover:shadow-lg transition-transform hover:-translate-y-1 cursor-pointer"
               onClick={() =>
                 trackSectionView(
                   `panorama_card_${c.title.replace(/\s+/g, "_")}`
@@ -70,7 +70,7 @@ const Panorama = () => {
               }
               aria-label={`${c.title} - ${c.stat}`}
             >
-              <div className="text-emerald-600 font-semibold text-sm mb-2">
+              <div className="text-cyan-600 font-semibold text-sm mb-2">
                 {c.title}
               </div>
               <div className="text-2xl font-bold text-gray-900 mb-2">
@@ -82,11 +82,11 @@ const Panorama = () => {
           ))}
         </div>
 
-        <div className="bg-white rounded-xl p-6 shadow-inner border border-emerald-50">
+        <div className="bg-white rounded-xl p-6 shadow-inner border border-cyan-200">
           <blockquote className="text-gray-800 italic text-lg">
-            “Si bien los hallazgos son preocupantes, también nos dan una hoja de
+            "Si bien los hallazgos son preocupantes, también nos dan una hoja de
             ruta clara para fortalecer a estas organizaciones, garantizar su
-            sostenibilidad y potenciar su impacto en las comunidades.”
+            sostenibilidad y potenciar su impacto en las comunidades."
           </blockquote>
           <div className="mt-4 text-right">
             <div className="text-sm text-gray-500">
@@ -97,14 +97,14 @@ const Panorama = () => {
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
             <button
               onClick={() => scrollTo("impacto", "panorama_go_impacto")}
-              className="bg-emerald-600 text-white px-5 py-2 rounded-full font-semibold hover:bg-emerald-700 transition-colors"
+              className="bg-cyan-500 text-white px-5 py-2 rounded-full font-semibold hover:bg-cyan-600 transition-colors"
             >
               Ver cómo actuamos
             </button>
 
             <button
               onClick={() => scrollTo("cta", "panorama_go_cta")}
-              className="border border-emerald-600 text-emerald-600 px-4 py-2 rounded-full font-medium hover:bg-emerald-50 transition-colors"
+              className="border border-cyan-500 text-cyan-600 px-4 py-2 rounded-full font-medium hover:bg-cyan-50 transition-colors"
             >
               Unirme / Registrar fundación
             </button>

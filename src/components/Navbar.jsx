@@ -56,7 +56,7 @@ export default function Navbar() {
         <a
           href="#hero"
           onClick={(e) => scrollToSection(e, "#hero")}
-          className="flex items-center gap-3 text-xl font-bold text-emerald-600"
+          className="flex items-center gap-3 text-xl font-bold text-cyan-600"
         >
           <img
             src={FundatioIcon}
@@ -75,8 +75,8 @@ export default function Navbar() {
                 onClick={(e) => scrollToSection(e, href)}
                 className={`inline-block pb-1 transition-colors duration-200 ${
                   active === href
-                    ? "text-emerald-700 font-semibold border-b-2 border-emerald-600"
-                    : "text-gray-700 hover:text-emerald-600"
+                    ? "text-cyan-700 font-semibold border-b-2 border-cyan-600"
+                    : "text-gray-700 hover:text-cyan-600"
                 }`}
                 aria-current={active === href ? "page" : undefined}
               >
@@ -88,7 +88,7 @@ export default function Navbar() {
             <a
               href="#cta"
               onClick={(e) => scrollToSection(e, "#cta")}
-              className="ml-2 inline-flex items-center rounded-full bg-emerald-600 px-4 py-2 text-white transition hover:bg-emerald-700 shadow-sm"
+              className="ml-2 inline-flex items-center rounded-full bg-cyan-500 px-4 py-2 text-white transition hover:bg-cyan-600 shadow-sm"
             >
               Únete
             </a>
@@ -103,9 +103,9 @@ export default function Navbar() {
           aria-expanded={open}
         >
           {open ? (
-            <X className="h-6 w-6 text-emerald-700" />
+            <X className="h-6 w-6 text-cyan-700" />
           ) : (
-            <Menu className="h-6 w-6 text-emerald-700" />
+            <Menu className="h-6 w-6 text-cyan-700" />
           )}
         </button>
       </nav>
@@ -157,7 +157,7 @@ export default function Navbar() {
                     key={href}
                     href={href}
                     onClick={(e) => scrollToSection(e, href)}
-                    className="py-3 rounded-lg transition-colors hover:bg-emerald-50 hover:text-emerald-700"
+                    className="py-3 rounded-lg transition-colors hover:bg-cyan-50 hover:text-cyan-700"
                   >
                     {label}
                   </a>
@@ -166,7 +166,7 @@ export default function Navbar() {
                 <a
                   href="#cta"
                   onClick={(e) => scrollToSection(e, "#cta")}
-                  className="mt-4 inline-flex items-center justify-center rounded-full bg-emerald-600 px-4 py-2 text-center text-white transition hover:bg-emerald-700"
+                  className="mt-4 inline-flex items-center justify-center rounded-full bg-cyan-500 px-4 py-2 text-center text-white transition hover:bg-cyan-600"
                 >
                   Únete
                 </a>

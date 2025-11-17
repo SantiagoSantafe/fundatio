@@ -38,9 +38,9 @@ const QueEs = () => {
   return (
     <section id="que-es" className="py-20 bg-white relative overflow-hidden">
       {/* Decorative elements - más sutiles */}
-      <div className="absolute top-10 right-10 w-32 h-32 bg-emerald-100 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+      <div className="absolute top-10 right-10 w-32 h-32 bg-cyan-200 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
       <div
-        className="absolute bottom-10 left-10 w-40 h-40 bg-teal-100 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"
+        className="absolute bottom-10 left-10 w-40 h-40 bg-cyan-100 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"
         style={{ animationDelay: "2s" }}
       ></div>
 
@@ -49,25 +49,23 @@ const QueEs = () => {
           {/* Texto */}
           <div className="w-full lg:w-1/2 flex flex-col justify-center">
             <div className="mb-6">
-              <span className="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
+              <span className="inline-block px-4 py-2 bg-cyan-500 text-white rounded-full text-sm font-medium mb-4">
                 ¿Qué es Fundatio?
               </span>
               <h2 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6 leading-tight">
                 Más que donaciones,
                 <br />
-                <span className="text-emerald-600">
-                  comunidad con propósito
-                </span>
+                <span className="text-cyan-600">comunidad con propósito</span>
               </h2>
             </div>
 
             <p className="text-lg text-gray-700 leading-relaxed mb-6">
               Somos el puente entre{" "}
-              <span className="font-semibold text-emerald-700">
+              <span className="font-semibold text-cyan-600">
                 corazones solidarios
               </span>{" "}
               y
-              <span className="font-semibold text-emerald-700">
+              <span className="font-semibold text-cyan-600">
                 {" "}
                 causas reales
               </span>{" "}
@@ -80,7 +78,7 @@ const QueEs = () => {
             <div className="flex flex-col sm:flex-row items-center gap-4 mb-6">
               <button
                 onClick={() => scrollToSection("panorama", "que_es_stat_1")}
-                className="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-emerald-700 text-sm font-semibold hover:bg-emerald-100"
+                className="px-4 py-2 bg-cyan-500 border border-cyan-200 rounded-full text-white text-sm font-semibold hover:bg-cyan-600 transition-colors"
                 aria-label="50% depende de una única fuente - Ver panorama"
               >
                 50% depende de una sola fuente
@@ -88,7 +86,7 @@ const QueEs = () => {
 
               <button
                 onClick={() => scrollToSection("panorama", "que_es_stat_2")}
-                className="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-emerald-700 text-sm font-semibold hover:bg-emerald-100"
+                className="px-4 py-2 bg-cyan-500 border border-cyan-200 rounded-full text-white text-sm font-semibold hover:bg-cyan-600 transition-colors"
                 aria-label="57% sin planificación estratégica - Ver panorama"
               >
                 57% sin planificación estratégica
@@ -96,7 +94,7 @@ const QueEs = () => {
 
               <button
                 onClick={() => scrollToSection("panorama", "que_es_stat_3")}
-                className="px-4 py-2 bg-emerald-50 border border-emerald-100 rounded-full text-emerald-700 text-sm font-semibold hover:bg-emerald-100"
+                className="px-4 py-2 bg-cyan-500 border border-cyan-200 rounded-full text-white text-sm font-semibold hover:bg-cyan-600 transition-colors"
                 aria-label="16% de la población dona - Ver panorama"
               >
                 16% de la población dona
@@ -124,13 +122,13 @@ const QueEs = () => {
                 onClick={() =>
                   scrollToSection("como-funciona", "que_es_how_it_works")
                 }
-                className="bg-emerald-600 text-white px-6 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-colors duration-300"
+                className="bg-cyan-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-cyan-600 transition-colors duration-300"
               >
                 Ver cómo funciona
               </button>
               <button
                 onClick={() => scrollToSection("cta", "que_es_join_now")}
-                className="border-2 border-emerald-600 text-emerald-600 px-6 py-3 rounded-full font-semibold hover:bg-emerald-50 transition-colors duration-300"
+                className="border-2 border-cyan-500 text-cyan-600 px-6 py-3 rounded-full font-semibold hover:bg-cyan-50 transition-colors duration-300"
               >
                 Únete ahora
               </button>
@@ -140,7 +138,7 @@ const QueEs = () => {
           {/* Imagen de voluntario */}
           <div className="w-full lg:w-1/2 h-full flex">
             <div className="relative w-full">
-              <div className="absolute -inset-4 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-2xl opacity-10 blur-lg"></div>
+              <div className="absolute -inset-4 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-2xl opacity-10 blur-lg"></div>
               <img
                 src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
                 alt="Voluntario ayudando en actividades comunitarias"
@@ -153,7 +151,7 @@ const QueEs = () => {
                 onClick={() => scrollToSection("impacto", "que_es_live_impact")}
               >
                 <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
                   <span className="text-xs font-medium text-gray-700">
                     Impacto en vivo
                   </span>
@@ -165,7 +163,7 @@ const QueEs = () => {
                   scrollToSection("trazabilidad", "que_es_verified")
                 }
               >
-                <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center">
+                <div className="w-6 h-6 bg-cyan-500 rounded-full flex items-center justify-center">
                   <span className="text-white text-xs font-bold">✓</span>
                 </div>
               </div>

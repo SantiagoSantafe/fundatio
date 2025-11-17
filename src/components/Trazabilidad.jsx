@@ -22,9 +22,9 @@ const Trazabilidad = () => {
     {
       title: "Seguridad de principio a fin",
       desc: "Cada aporte se guarda en un registro inalterable y público, evitando fraudes o cambios posteriores.",
-      iconBg: "bg-emerald-100",
-      iconText: "text-emerald-600",
-      ringColor: "ring-emerald-200",
+      iconBg: "bg-cyan-50",
+      iconText: "text-cyan-600",
+      ringColor: "ring-cyan-200",
       Icon: ShieldCheck,
       bullets: [
         "Registro a prueba de manipulaciones",
@@ -35,9 +35,9 @@ const Trazabilidad = () => {
     {
       title: "Reportes en tiempo real",
       desc: "Sigue de cerca el avance de los proyectos que apoyas gracias a paneles y alertas instantáneas.",
-      iconBg: "bg-teal-100",
-      iconText: "text-teal-600",
-      ringColor: "ring-teal-200",
+      iconBg: "bg-cyan-100",
+      iconText: "text-cyan-700",
+      ringColor: "ring-cyan-300",
       Icon: BarChart,
       bullets: [
         "Notificaciones automáticas del uso de fondos",
@@ -71,16 +71,16 @@ const Trazabilidad = () => {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium mb-4">
             Confianza total
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
-            Trazabilidad y <span className="text-emerald-600">transparencia</span>
+            Trazabilidad y <span className="text-cyan-600">transparencia</span>
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-gray-600 sm:mt-6 sm:text-xl">
             Nuestra plataforma registra cada paso de tu donación en un sistema inalterable y
             de acceso público. Así puedes comprobar, en cualquier momento, a dónde llegó tu
-            aporte y el <span className="font-semibold text-emerald-700">impacto que generó</span>.
+            aporte y el <span className="font-semibold text-cyan-700">impacto que generó</span>.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ const Trazabilidad = () => {
                   trackSectionView(`trazabilidad_feature_${i + 1}`);
                 }}
               >
-                <div className="relative overflow-hidden rounded-2xl border border-emerald-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 lg:p-10 cursor-pointer">
+                <div className="relative overflow-hidden rounded-2xl border border-cyan-100 bg-white p-8 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 lg:p-10 cursor-pointer">
                   {/* Icon */}
                   <div className="mb-6">
                     <span
@@ -119,7 +119,7 @@ const Trazabilidad = () => {
                       <ul className="space-y-3">
                         {bullets.map((bullet, idx) => (
                           <li key={bullet} className="flex items-start">
-                            <div className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
+                            <div className="mr-3 mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-500 flex-shrink-0" />
                             <span className="text-sm text-gray-600 lg:text-base">
                               {bullet}
                             </span>
@@ -136,18 +136,18 @@ const Trazabilidad = () => {
 
         {/* Process Flow Section */}
         <div className="mt-20 sm:mt-24 lg:mt-28">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-50 via-emerald-50 to-emerald-100 p-8 shadow-inner lg:p-12">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-cyan-50 via-cyan-50 to-cyan-100 p-8 shadow-inner lg:p-12">
             {/* Background Pattern */}
             <div className="absolute inset-0 opacity-20">
-              <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-emerald-200" />
-              <div className="absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-emerald-200" />
+              <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full bg-cyan-200" />
+              <div className="absolute -bottom-8 -left-8 h-32 w-32 rounded-full bg-cyan-200" />
             </div>
             
             <div className="relative">
               {/* Section Header */}
               <div className="text-center">
                 <h3 className="text-2xl font-bold text-gray-900 sm:text-3xl">
-                  De tu aporte al resultado, <span className="text-emerald-600">paso a paso</span>
+                  De tu aporte al resultado, <span className="text-cyan-600">paso a paso</span>
                 </h3>
                 <p className="mt-3 text-lg text-gray-600">
                   Transparencia total en cada etapa del proceso
@@ -168,15 +168,15 @@ const Trazabilidad = () => {
                       {/* Connector Line - Desktop */}
                       {idx < traceSteps.length - 1 && (
                         <div className="absolute left-1/2 top-8 hidden h-px w-full translate-x-1/2 lg:block">
-                          <div className="h-full bg-gradient-to-r from-emerald-400 via-emerald-400 to-transparent" />
-                          <ArrowRight className="absolute -right-2 -top-2 h-4 w-4 text-emerald-500" />
+                          <div className="h-full bg-gradient-to-r from-cyan-400 via-cyan-400 to-transparent" />
+                          <ArrowRight className="absolute -right-2 -top-2 h-4 w-4 text-cyan-500" />
                         </div>
                       )}
 
                       {/* Step Content */}
                       <div className="flex flex-col items-center text-center hover:scale-105 transition-transform duration-300">
                         <div className="relative mb-4">
-                          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-600 text-xl font-bold text-white shadow-lg ring-4 ring-emerald-200 ring-offset-2">
+                          <span className="flex h-16 w-16 items-center justify-center rounded-full bg-cyan-600 text-xl font-bold text-white shadow-lg ring-4 ring-cyan-200 ring-offset-2">
                             {idx + 1}
                           </span>
                         </div>
@@ -193,7 +193,7 @@ const Trazabilidad = () => {
 
                       {/* Connector Line - Mobile */}
                       {idx < traceSteps.length - 1 && (
-                        <div className="mx-auto mt-6 h-8 w-px bg-gradient-to-b from-emerald-400 to-transparent lg:hidden" />
+                        <div className="mx-auto mt-6 h-8 w-px bg-gradient-to-b from-cyan-400 to-transparent lg:hidden" />
                       )}
                     </div>
                   ))}
@@ -204,7 +204,7 @@ const Trazabilidad = () => {
               <div className="mt-12 text-center">
                 <button 
                   onClick={scrollToCTA}
-                  className="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-colors duration-300 hover:scale-105 transform shadow-lg"
+                  className="bg-cyan-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-cyan-600 transition-colors duration-300 hover:scale-105 transform shadow-lg"
                 >
                   Quiero esta transparencia
                 </button>

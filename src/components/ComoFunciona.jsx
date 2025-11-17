@@ -23,9 +23,9 @@ const ComoFunciona = () => {
       title: "Explora fundaciones",
       desc: "Navega entre organizaciones verificadas y elige la causa que más te inspire.",
       color: {
-        bg: "bg-emerald-100",
-        text: "text-emerald-600",
-        ring: "ring-emerald-200",
+        bg: "bg-cyan-50",
+        text: "text-cyan-600",
+        ring: "ring-cyan-200",
       },
       Icon: Search,
     },
@@ -33,9 +33,9 @@ const ComoFunciona = () => {
       title: "Dona en dos clics",
       desc: "Selecciona el monto o artículos en especie y completa tu aporte de forma segura.",
       color: {
-        bg: "bg-teal-100",
-        text: "text-teal-600",
-        ring: "ring-teal-200",
+        bg: "bg-cyan-100",
+        text: "text-cyan-700",
+        ring: "ring-cyan-300",
       },
       Icon: HandCoins,
     },
@@ -43,37 +43,37 @@ const ComoFunciona = () => {
       title: "Sigue el impacto",
       desc: "Recibe historias, fotos y métricas auditadas que muestran el cambio generado.",
       color: {
-        bg: "bg-emerald-100",
-        text: "text-emerald-600",
-        ring: "ring-emerald-200",
+        bg: "bg-cyan-50",
+        text: "text-cyan-600",
+        ring: "ring-cyan-200",
       },
       Icon: BarChart2,
     },
   ];
 
   return (
-    <section id="como-funciona" className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-teal-50 to-sky-50 py-16 sm:py-20 lg:py-24">
+    <section id="como-funciona" className="relative overflow-hidden bg-gradient-to-br from-cyan-50 via-sky-50 to-blue-50 py-16 sm:py-20 lg:py-24">
       {/* Decorative elements */}
-      <div className="absolute top-10 right-10 w-32 h-32 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-pulse"></div>
-      <div className="absolute bottom-10 left-10 w-40 h-40 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-pulse" style={{ animationDelay: "2s" }}></div>
+      <div className="absolute top-10 right-10 w-32 h-32 bg-cyan-200 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-40 h-40 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-pulse" style={{ animationDelay: "2s" }}></div>
       
       {/* Decorative connector for desktop */}
       <div
         aria-hidden
-        className="absolute left-1/2 top-60 hidden h-0.5 w-[65%] max-w-4xl -translate-x-1/2 bg-gradient-to-r from-transparent via-emerald-300 to-transparent lg:block"
+        className="absolute left-1/2 top-60 hidden h-0.5 w-[65%] max-w-4xl -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-300 to-transparent lg:block"
       />
       
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
         {/* Header Section */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium mb-4">
             Proceso simple
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl lg:text-5xl">
             ¿Cómo funciona?
           </h2>
           <p className="mt-4 text-lg text-gray-600 sm:mt-4">
-            Hacer el bien nunca fue tan <span className="font-semibold text-emerald-700">simple y transparente</span>
+            Hacer el bien nunca fue tan <span className="font-semibold text-cyan-700">simple y transparente</span>
           </p>
         </div>
 
@@ -92,7 +92,7 @@ const ComoFunciona = () => {
                 {idx < steps.length - 1 && (
                   <div
                     aria-hidden
-                    className="absolute left-1/2 top-20 h-12 w-px -translate-x-1/2 bg-gradient-to-b from-emerald-300 to-transparent lg:hidden"
+                    className="absolute left-1/2 top-20 h-12 w-px -translate-x-1/2 bg-gradient-to-b from-cyan-300 to-transparent lg:hidden"
                   />
                 )}
                 
@@ -107,7 +107,7 @@ const ComoFunciona = () => {
                     </span>
                     
                     {/* Step Number */}
-                    <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-emerald-600 text-xs font-bold text-white sm:h-7 sm:w-7">
+                    <span className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-600 text-xs font-bold text-white sm:h-7 sm:w-7">
                       {idx + 1}
                     </span>
                   </div>
@@ -129,7 +129,7 @@ const ComoFunciona = () => {
 
         {/* CTA Section */}
         <div className="mt-16 sm:mt-20 text-center">
-          <div className="bg-white rounded-2xl shadow-lg p-8 border border-emerald-100">
+          <div className="bg-white rounded-2xl shadow-lg p-8 border border-cyan-100">
             <h3 className="text-2xl font-bold text-gray-900 mb-4">
               ¿Listo para comenzar?
             </h3>
@@ -138,7 +138,7 @@ const ComoFunciona = () => {
             </p>
             <button 
               onClick={scrollToCTA}
-              className="bg-emerald-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-emerald-700 transition-colors duration-300 hover:scale-105 transform shadow-lg"
+              className="bg-cyan-500 text-white px-8 py-3 rounded-full font-semibold hover:bg-cyan-600 transition-colors duration-300 hover:scale-105 transform shadow-lg"
             >
               Empezar ahora
             </button>

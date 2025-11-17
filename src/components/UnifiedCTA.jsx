@@ -203,24 +203,24 @@ const UnifiedCTA = () => {
   return (
     <section id="cta" className="py-20 bg-white relative overflow-hidden">
       {/* Decorative elements - más sutiles */}
-      <div className="absolute top-10 right-10 w-32 h-32 bg-emerald-100 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
-      <div className="absolute bottom-10 left-10 w-40 h-40 bg-teal-100 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{ animationDelay: "2s" }}></div>
+      <div className="absolute top-10 right-10 w-32 h-32 bg-cyan-100 rounded-full mix-blend-multiply filter blur-xl opacity-30 animate-pulse"></div>
+      <div className="absolute bottom-10 left-10 w-40 h-40 bg-cyan-100 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{ animationDelay: "2s" }}></div>
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
           <div className="text-center mb-16">
-            <span className="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
+            <span className="inline-block px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium mb-4">
               Únete a la lista de espera
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
               ¿Listo para 
               <br className="hidden sm:inline" />
-              <span className="text-emerald-600">transformar vidas</span>?
+              <span className="text-cyan-600">transformar vidas</span>?
             </h2>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed">
               Únete a nuestra lista de espera y sé parte del futuro de las donaciones 
-              <span className="font-semibold text-emerald-700"> transparentes y efectivas</span> en Colombia.
+              <span className="font-semibold text-cyan-700"> transparentes y efectivas</span> en Colombia.
             </p>
           </div>
 
@@ -231,8 +231,8 @@ const UnifiedCTA = () => {
                 onClick={() => handleTabChange('donantes')}
                 className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
                   activeTab === 'donantes'
-                    ? 'bg-emerald-600 text-white shadow-lg'
-                    : 'text-gray-600 hover:text-emerald-600 hover:bg-white'
+                    ? 'bg-cyan-500 text-white shadow-lg'
+                    : 'text-gray-600 hover:text-cyan-600 hover:bg-white'
                 }`}
               >
                 Quiero Donar
@@ -241,8 +241,8 @@ const UnifiedCTA = () => {
                 onClick={() => handleTabChange('fundaciones')}
                 className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
                   activeTab === 'fundaciones'
-                    ? 'bg-emerald-600 text-white shadow-lg'
-                    : 'text-gray-600 hover:text-emerald-600 hover:bg-white'
+                    ? 'bg-cyan-500 text-white shadow-lg'
+                    : 'text-gray-600 hover:text-cyan-600 hover:bg-white'
                 }`}
               >
                 Soy Fundación
@@ -257,7 +257,7 @@ const UnifiedCTA = () => {
               {activeTab === 'donantes' ? (
                 <div>
                   <div className="text-center mb-8">
-                    <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
                       <span className="text-2xl">💝</span>
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
@@ -274,7 +274,7 @@ const UnifiedCTA = () => {
                       { icon: '📊', title: 'Impacto Medible', desc: 'Recibe reportes multimedia del impacto generado' },
                       { icon: '🤝', title: 'Conexión Directa', desc: 'Conéctate directamente con las fundaciones que apoyas' }
                     ].map((item, i) => (
-                      <div key={i} className="flex items-start space-x-4 p-3 bg-white rounded-lg border border-emerald-100">
+                      <div key={i} className="flex items-start space-x-4 p-3 bg-white rounded-lg border border-cyan-100">
                         <span className="text-2xl mt-1 flex-shrink-0">{item.icon}</span>
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
@@ -287,7 +287,7 @@ const UnifiedCTA = () => {
               ) : (
                 <div>
                   <div className="text-center mb-8">
-                    <div className="w-16 h-16 bg-teal-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <div className="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
                       <span className="text-2xl">🏢</span>
                     </div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-2">
@@ -304,7 +304,7 @@ const UnifiedCTA = () => {
                       { icon: '📈', title: 'Herramientas de Gestión', desc: 'Panel completo para gestionar donaciones y reportes' },
                       { icon: '💬', title: 'Comunicación Directa', desc: 'Mantén informados a tus donantes en tiempo real' }
                     ].map((item, i) => (
-                      <div key={i} className="flex items-start space-x-4 p-3 bg-white rounded-lg border border-emerald-100">
+                      <div key={i} className="flex items-start space-x-4 p-3 bg-white rounded-lg border border-cyan-100">
                         <span className="text-2xl mt-1 flex-shrink-0">{item.icon}</span>
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-1">{item.title}</h4>
@@ -318,11 +318,11 @@ const UnifiedCTA = () => {
             </div>
 
             {/* Registration Form */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 h-full border border-emerald-200">
+            <div className="bg-white rounded-2xl shadow-lg p-8 h-full border border-cyan-200">
               {submitted ? (
                 <div className="text-center py-8">
-                  <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-2xl text-emerald-600">✓</span>
+                  <div className="w-16 h-16 bg-cyan-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl text-cyan-600">✓</span>
                   </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">
                     ¡Registro Exitoso!
@@ -330,8 +330,8 @@ const UnifiedCTA = () => {
                   <p className="text-gray-600 mb-6">
                     Te hemos añadido a nuestra lista de espera. Nos pondremos en contacto contigo muy pronto.
                   </p>
-                  <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4">
-                    <p className="text-emerald-800 font-medium text-sm">
+                  <div className="bg-cyan-50 border border-cyan-200 rounded-lg p-4">
+                    <p className="text-cyan-800 font-medium text-sm">
                       📧 Revisa tu email para confirmar tu registro
                     </p>
                   </div>
@@ -367,7 +367,7 @@ const UnifiedCTA = () => {
                       value={formData.nombre}
                       onChange={handleInputChange}
                       onFocus={() => handleFieldFocus('nombre')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors ${
                         errors.nombre ? 'border-red-500' : 'border-gray-300'
                       }`}
                       required
@@ -387,7 +387,7 @@ const UnifiedCTA = () => {
                       value={formData.email}
                       onChange={handleInputChange}
                       onFocus={() => handleFieldFocus('email')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors ${
                         errors.email ? 'border-red-500' : 'border-gray-300'
                       }`}
                       required
@@ -407,7 +407,7 @@ const UnifiedCTA = () => {
                       value={formData.telefono}
                       onChange={handleInputChange}
                       onFocus={() => handleFieldFocus('telefono')}
-                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${
+                      className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors ${
                         errors.telefono ? 'border-red-500' : 'border-gray-300'
                       }`}
                       required
@@ -428,7 +428,7 @@ const UnifiedCTA = () => {
                         value={formData.organizacion}
                         onChange={handleInputChange}
                         onFocus={() => handleFieldFocus('organizacion')}
-                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors ${
+                        className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors ${
                           errors.organizacion ? 'border-red-500' : 'border-gray-300'
                         }`}
                         required
@@ -449,7 +449,7 @@ const UnifiedCTA = () => {
                       onChange={handleInputChange}
                       onFocus={() => handleFieldFocus('mensaje')}
                       rows={3}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-colors resize-none"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-colors resize-none"
                       placeholder={activeTab === 'donantes' 
                         ? 'Cuéntanos qué causas te interesan más...'
                         : 'Describe brevemente tu misión y objetivos...'
@@ -463,7 +463,7 @@ const UnifiedCTA = () => {
                     className={`w-full py-4 px-6 rounded-lg font-semibold text-white transition-all duration-300 transform shadow-lg ${
                       loading
                         ? 'bg-gray-400 cursor-not-allowed'
-                        : 'bg-emerald-600 hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 hover:scale-[1.02]'
+                        : 'bg-cyan-500 hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 hover:scale-[1.02]'
                     }`}
                   >
                     {loading 
@@ -481,17 +481,17 @@ const UnifiedCTA = () => {
           {/* Bottom Stats */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             <div className="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md hover:bg-white transition-all duration-300">
-              <div className="text-3xl font-bold text-emerald-600 mb-2">100%</div>
+              <div className="text-3xl font-bold text-cyan-600 mb-2">100%</div>
               <p className="text-gray-800 font-semibold">Transparencia Garantizada</p>
               <p className="text-gray-500 text-sm mt-1">Cada peso rastreado en tiempo real</p>
             </div>
             <div className="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md hover:bg-white transition-all duration-300">
-              <div className="text-3xl font-bold text-emerald-600 mb-2">0%</div>
+              <div className="text-3xl font-bold text-cyan-600 mb-2">0%</div>
               <p className="text-gray-800 font-semibold">Comisiones Ocultas</p>
               <p className="text-gray-500 text-sm mt-1">Modelo sostenible y justo para todos</p>
             </div>
             <div className="bg-gray-50 rounded-xl p-6 shadow-sm border border-gray-200 hover:shadow-md hover:bg-white transition-all duration-300">
-              <div className="text-3xl font-bold text-emerald-600 mb-2">24/7</div>
+              <div className="text-3xl font-bold text-cyan-600 mb-2">24/7</div>
               <p className="text-gray-800 font-semibold">Soporte Disponible</p>
               <p className="text-gray-500 text-sm mt-1">Estamos aquí para ayudarte siempre</p>
             </div>
@@ -500,19 +500,19 @@ const UnifiedCTA = () => {
           {/* Additional trust indicators */}
           <div className="mt-12 text-center">
             <p className="text-sm text-gray-500 mb-4">
-              <span className="font-semibold text-emerald-700">Fundatio</span> • Apoya a tu causa con confianza. Mira el impacto.
+              <span className="font-semibold text-cyan-700">Fundatio</span> • Apoya a tu causa con confianza. Mira el impacto.
             </p>
             <div className="flex justify-center items-center space-x-6 text-xs text-gray-400">
               <span className="flex items-center">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></div>
+                <div className="w-2 h-2 bg-cyan-500 rounded-full mr-2"></div>
                 Rigurosa verificación
               </span>
               <span className="flex items-center">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></div>
+                <div className="w-2 h-2 bg-cyan-500 rounded-full mr-2"></div>
                 Comunidad transparente
               </span>
               <span className="flex items-center">
-                <div className="w-2 h-2 bg-emerald-500 rounded-full mr-2"></div>
+                <div className="w-2 h-2 bg-cyan-500 rounded-full mr-2"></div>
                 Impacto optimista
               </span>
             </div>

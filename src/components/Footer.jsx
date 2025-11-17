@@ -4,10 +4,11 @@ import {
   Twitter,
   Instagram,
   Linkedin,
-  Heart,
   Shield,
-  Users
+  Users,
+  Heart
 } from "lucide-react";
+import FundatioIcon from "../assets/Fundatio_logo-removebg-preview.png"; // Ajusta la ruta según tu estructura
 
 // Footer actualizado según branding
 const Footer = () => {
@@ -42,8 +43,8 @@ const Footer = () => {
   return (
     <footer className="bg-slate-900 text-gray-300">
       {/* Background pattern */}
-      <div >
-        <div className="h-full w-full bg-gradient-to-br from-teal-500 to-emerald-500"></div>
+      <div>
+        <div className="h-full w-full bg-gradient-to-br from-cyan-400 to-cyan-600"></div>
       </div>
       
       <div className="container mx-auto px-6 py-16 relative">
@@ -51,13 +52,15 @@ const Footer = () => {
           {/* Brand Section */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-teal-400 to-emerald-500 rounded-lg flex items-center justify-center">
-                <Heart className="h-6 w-6 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-white">Fundatio</h3>
+              <img
+                src={FundatioIcon}
+                alt="Fundatio logo"
+                className="h-12 w-auto object-contain"
+                loading="lazy"
+              />
             </div>
             <p className="text-gray-400 max-w-xs text-sm leading-relaxed mb-6">
-              <span className="text-teal-400 font-medium">Apoya a tu causa con confianza. Mira el impacto.</span>
+              <span className="text-cyan-400 font-medium">Apoya a tu causa con confianza. Mira el impacto.</span>
               <br /><br />
               Conectamos corazones generosos con fundaciones transparentes para crear un impacto real y medible en Colombia.
             </p>
@@ -67,7 +70,7 @@ const Footer = () => {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="rounded-full p-2 bg-slate-800 text-gray-400 transition-all duration-300 hover:bg-teal-600 hover:text-white hover:scale-110"
+                  className="rounded-full p-2 bg-slate-800 text-gray-400 transition-all duration-300 hover:bg-cyan-500 hover:text-white hover:scale-110"
                 >
                   <Icon className="h-5 w-5" />
                 </a>
@@ -88,7 +91,7 @@ const Footer = () => {
                   <li key={label}>
                     <a 
                       href={href} 
-                      className="text-gray-400 hover:text-teal-400 transition-colors duration-300 text-sm"
+                      className="text-gray-400 hover:text-cyan-400 transition-colors duration-300 text-sm"
                     >
                       {label}
                     </a>
@@ -103,15 +106,15 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-gray-700">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             <div className="flex items-center gap-3 text-center md:text-left">
-              <Shield className="h-5 w-5 text-teal-400 flex-shrink-0" />
+              <Shield className="h-5 w-5 text-cyan-400 flex-shrink-0" />
               <span className="text-sm text-gray-400">100% Transparencia Garantizada</span>
             </div>
             <div className="flex items-center gap-3 text-center md:text-left">
-              <Users className="h-5 w-5 text-teal-400 flex-shrink-0" />
+              <Users className="h-5 w-5 text-cyan-400 flex-shrink-0" />
               <span className="text-sm text-gray-400">Fundaciones Verificadas</span>
             </div>
             <div className="flex items-center gap-3 text-center md:text-left">
-              <Heart className="h-5 w-5 text-teal-400 flex-shrink-0" />
+              <Heart className="h-5 w-5 text-cyan-400 flex-shrink-0" />
               <span className="text-sm text-gray-400">Impacto en Tiempo Real</span>
             </div>
           </div>
@@ -120,7 +123,7 @@ const Footer = () => {
           <div className="flex flex-col items-center justify-between gap-6 md:flex-row text-sm">
             <p className="text-gray-500">
               © 2025 Fundatio. Todos los derechos reservados. 
-              <span className="text-teal-400 ml-1">Transformando vidas juntos.</span>
+              <span className="text-cyan-400 ml-1">Transformando vidas juntos.</span>
             </p>
             <div className="flex gap-6">
               {[
@@ -131,7 +134,7 @@ const Footer = () => {
                 <a 
                   key={label} 
                   href={href} 
-                  className="text-gray-500 hover:text-teal-400 transition-colors duration-300"
+                  className="text-gray-500 hover:text-cyan-400 transition-colors duration-300"
                 >
                   {label}
                 </a>
@@ -143,6 +146,5 @@ const Footer = () => {
     </footer>
   );
 };
-
 
 export default Footer;

@@ -39,7 +39,6 @@ const Fundaciones = () => {
         >
           Fundaciones destacadas
         </h2>
-
         {/* Grid */}
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {foundations.map((f, i) => (
@@ -59,17 +58,13 @@ const Fundaciones = () => {
                   e.target.src = "https://placehold.co/160x160?text=Img";
                 }}
               />
-
               <h3 className="text-lg font-semibold text-gray-800 text-center">{f.nombre}</h3>
-
               <p className="mt-3 text-center text-sm leading-relaxed text-gray-600">
                 {f.descripcion}
               </p>
-
-              <span className="mt-5 inline-block rounded-full bg-emerald-50 px-4 py-1 text-xs font-medium tracking-wide text-emerald-700">
+              <span className="mt-5 inline-block rounded-full bg-cyan-50 px-4 py-1 text-xs font-medium tracking-wide text-cyan-700">
                 {f.impacto}
               </span>
-
               <span className="mt-3 inline-block rounded-full bg-blue-50 px-3 py-0.5 text-[0.65rem] font-medium uppercase tracking-wide text-blue-600">
                 {f.causa}
               </span>

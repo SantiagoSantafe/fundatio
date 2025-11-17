@@ -31,28 +31,28 @@ const Impacto = () => {
   return (
     <section
       id="impacto"
-      className="py-20 bg-gradient-to-br from-emerald-50 via-teal-50 to-sky-50 relative overflow-hidden"
+      className="py-20 bg-gradient-to-br from-cyan-50 via-sky-50 to-blue-50 relative overflow-hidden"
     >
       {/* Decorative elements */}
-      <div className="absolute top-10 right-10 w-32 h-32 bg-emerald-200 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-pulse"></div>
+      <div className="absolute top-10 right-10 w-32 h-32 bg-cyan-200 rounded-full mix-blend-multiply filter blur-xl opacity-60 animate-pulse"></div>
       <div
-        className="absolute bottom-10 left-10 w-40 h-40 bg-teal-200 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-pulse"
+        className="absolute bottom-10 left-10 w-40 h-40 bg-cyan-300 rounded-full mix-blend-multiply filter blur-xl opacity-40 animate-pulse"
         style={{ animationDelay: "2s" }}
       ></div>
 
       <div className="container mx-auto px-4 relative">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-2 bg-emerald-100 text-emerald-700 rounded-full text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-2 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium mb-4">
             Nuestro propósito
           </span>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
             El Impacto que{" "}
-            <span className="text-emerald-600">Queremos Crear</span>
+            <span className="text-cyan-600">Queremos Crear</span>
           </h2>
           <p className="text-lg text-gray-600 mb-16 max-w-3xl mx-auto">
             Nuestra misión es transformar la manera en que las personas se
             conectan con las causas que más les importan, creando un mundo más{" "}
-            <span className="font-semibold text-emerald-700">
+            <span className="font-semibold text-cyan-700">
               solidario y transparente
             </span>
             .
@@ -60,7 +60,7 @@ const Impacto = () => {
 
           {/* Short context + link to Panorama */}
           <div className="max-w-3xl mx-auto mb-12">
-            <div className="bg-emerald-50 border border-emerald-100 rounded-lg p-4 flex items-center justify-between">
+            <div className="bg-cyan-50 border border-cyan-100 rounded-lg p-4 flex items-center justify-between">
               <div className="text-sm text-gray-700">
                 Conoce el diagnóstico que inspira nuestras prioridades:
                 fragilidad financiera, brecha tecnológica y baja participación
@@ -68,7 +68,7 @@ const Impacto = () => {
               </div>
               <button
                 onClick={scrollToPanorama}
-                className="ml-4 bg-white text-emerald-600 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-100"
+                className="ml-4 bg-white text-cyan-600 px-4 py-2 rounded-full text-sm font-semibold hover:bg-gray-100"
                 aria-label="Ver panorama completo"
               >
                 Ver diagnóstico
@@ -83,35 +83,35 @@ const Impacto = () => {
             {
               valor: "$10M+",
               texto: "Meta de Donaciones Anuales",
-              color: "text-emerald-600",
+              color: "text-cyan-600",
               descripcion: "Facilitar millones en donaciones",
               metric: "donations_goal",
             },
             {
               valor: "1,000+",
               texto: "Fundaciones Verificadas",
-              color: "text-teal-600",
+              color: "text-cyan-700",
               descripcion: "Red confiable de organizaciones",
               metric: "foundations_goal",
             },
             {
               valor: "100K+",
               texto: "Donantes Conectados",
-              color: "text-emerald-600",
+              color: "text-cyan-600",
               descripcion: "Comunidad comprometida",
               metric: "donors_goal",
             },
             {
               valor: "5,000+",
               texto: "Proyectos Impulsados",
-              color: "text-teal-600",
+              color: "text-cyan-700",
               descripcion: "Iniciativas que cambien vidas",
               metric: "projects_goal",
             },
           ].map((item, i) => (
             <div
               key={i}
-              className="bg-white p-6 rounded-xl shadow-sm border border-emerald-100 hover:shadow-lg transition-all duration-300 hover:scale-105 text-center group cursor-pointer"
+              className="bg-white p-6 rounded-xl shadow-sm border border-cyan-100 hover:shadow-lg transition-all duration-300 hover:scale-105 text-center group cursor-pointer"
               onClick={() => {
                 trackSectionView(`impacto_metric_${item.metric}`);
               }}
@@ -128,9 +128,9 @@ const Impacto = () => {
         </div>
 
         {/* Visión de Futuro */}
-        <div className="bg-white rounded-2xl shadow-lg p-10 border border-emerald-100">
+        <div className="bg-white rounded-2xl shadow-lg p-10 border border-cyan-100">
           <h3 className="text-3xl font-semibold text-center mb-10 text-gray-800">
-            Nuestra Visión de <span className="text-emerald-600">Impacto</span>
+            Nuestra Visión de <span className="text-cyan-600">Impacto</span>
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
@@ -165,7 +165,7 @@ const Impacto = () => {
             ].map((vision, i) => (
               <div
                 key={i}
-                className="bg-emerald-50 rounded-lg p-6 hover:shadow-md transition-all duration-300 hover:scale-105 border border-emerald-100 cursor-pointer"
+                className="bg-cyan-50 rounded-lg p-6 hover:shadow-md transition-all duration-300 hover:scale-105 border border-cyan-100 cursor-pointer"
                 onClick={() => {
                   trackSectionView(`impacto_vision_${vision.id}`);
                 }}
@@ -179,9 +179,9 @@ const Impacto = () => {
                 <p className="text-gray-600 mb-4 leading-relaxed">
                   {vision.descripcion}
                 </p>
-                <div className="flex items-center text-emerald-600 font-medium">
+                <div className="flex items-center text-cyan-600 font-medium">
                   <span className="mr-2">Próximamente</span>
-                  <div className="w-3 h-3 bg-emerald-500 rounded-full animate-pulse"></div>
+                  <div className="w-3 h-3 bg-cyan-500 rounded-full animate-pulse"></div>
                 </div>
               </div>
             ))}
@@ -189,7 +189,7 @@ const Impacto = () => {
 
           {/* CTA Section */}
           <div className="mt-12 text-center">
-            <div className="bg-gradient-to-r from-emerald-500 to-teal-500 rounded-xl p-8 text-white">
+            <div className="bg-gradient-to-r from-cyan-500 to-cyan-600 rounded-xl p-8 text-white">
               <h4 className="text-2xl font-bold mb-4">
                 ¿Quieres ser parte de este impacto?
               </h4>
@@ -199,7 +199,7 @@ const Impacto = () => {
               </p>
               <button
                 onClick={scrollToCTA}
-                className="bg-white text-emerald-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 hover:scale-105 transform shadow-lg"
+                className="bg-white text-cyan-600 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 hover:scale-105 transform shadow-lg"
               >
                 Formar parte de la comunidad
               </button>
