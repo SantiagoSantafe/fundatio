@@ -46,8 +46,7 @@ const Impacto = () => {
             Nuestro propósito
           </span>
           <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            El Impacto que{" "}
-            <span className="text-cyan-600">Queremos Crear</span>
+            El Impacto que <span className="text-cyan-600">Queremos Crear</span>
           </h2>
           <p className="text-lg text-gray-600 mb-16 max-w-3xl mx-auto">
             Nuestra misión es transformar la manera en que las personas se
