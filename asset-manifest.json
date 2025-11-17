@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.7f852fc1.css",
-    "main.js": "/static/js/main.a115f1fa.js",
+    "main.css": "/static/css/main.dee17d7e.css",
+    "main.js": "/static/js/main.ef6fcaf9.js",
     "static/js/453.3e9895b9.chunk.js": "/static/js/453.3e9895b9.chunk.js",
     "static/media/Fundatio_logo-removebg-preview.png": "/static/media/Fundatio_logo-removebg-preview.95ab191c5ba69c39c556.png",
     "index.html": "/index.html",
-    "main.7f852fc1.css.map": "/static/css/main.7f852fc1.css.map",
-    "main.a115f1fa.js.map": "/static/js/main.a115f1fa.js.map",
+    "main.dee17d7e.css.map": "/static/css/main.dee17d7e.css.map",
+    "main.ef6fcaf9.js.map": "/static/js/main.ef6fcaf9.js.map",
     "453.3e9895b9.chunk.js.map": "/static/js/453.3e9895b9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7f852fc1.css",
-    "static/js/main.a115f1fa.js"
+    "static/css/main.dee17d7e.css",
+    "static/js/main.ef6fcaf9.js"
   ]
 }
